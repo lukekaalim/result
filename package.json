@@ -12,6 +12,8 @@
     "c8": "^5.0.4"
   },
   "scripts": {
+    "preversion": "npm test",
+    "postversion": "git push --follow-tags",
     "test": "node test"
   },
   "repository": {
