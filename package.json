@@ -1,6 +1,6 @@
 {
   "name": "@lukekaalim/result",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple library for creating and using a Result data type",
   "main": "src/result",
   "directories": {
