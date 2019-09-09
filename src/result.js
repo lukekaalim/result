@@ -40,14 +40,6 @@ const chain = (result) => ({
   result: () => result,
 });
 
-
-const main = async (res/*: Result<string, Error>*/) => {
-  const greeting = chainResult(res)
-    .then(name => succeed(`Hello ${name}, how are you?`))
-    .catch(error => succeed(`Oh fuck of shit ${error.message}`))
-    .then(greeting => succeed({ type: 'greeting', greeting }))
-}
-
 module.exports = {
   succeed,
   fail,
