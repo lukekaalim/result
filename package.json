@@ -1,0 +1,30 @@
+{
+  "name": "@lukekaalim/result",
+  "version": "1.0.0",
+  "description": "Simple library for creating and using a Result data type",
+  "main": "src/result",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@lukekaalim/test": "^5.0.0",
+    "c8": "^5.0.4"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukekaalim/result.git"
+  },
+  "keywords": [
+    "Result"
+  ],
+  "author": "Luke Kaalim (luke@kaal.im)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukekaalim/result/issues"
+  },
+  "homepage": "https://github.com/lukekaalim/result#readme"
+}
