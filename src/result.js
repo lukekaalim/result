@@ -16,7 +16,7 @@ const fail = (failure) => ({
 });
 
 // Simple handler function: if the result is successful, goto the second argument, it fails, goto the third
-const handleResult = (
+const handle = (
   result,
   onSuccess,
   onFailure,
@@ -29,8 +29,14 @@ const handleResult = (
 };
 
 const chain = (result) => ({
-  then: (resolve) => result.type === 'success' ? chain(resolve(result.success)) : chain(result),
-  catch: (reject) => result.type === 'failure' ? chain(reject(result.failure)) : chain(result),
+  then: (resolve) => handle(result,
+    success => chain(resolve(success)),
+    () => chain(result)
+  ),
+  catch: (reject) => handle(result,
+    () => chain(result),
+    (failure) => chain(reject(failure))
+  ),
   result: () => result,
 });
 
@@ -45,6 +51,6 @@ const main = async (res/*: Result<string, Error>*/) => {
 module.exports = {
   succeed,
   fail,
-  handleResult,
+  handle,
   chain,
 };
