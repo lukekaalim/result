@@ -16,8 +16,8 @@ declare export function succeed<S>(value: S): Success<S>;
 declare export function fail<F>(value: F): Failure<F>;
 
 type Chain<S, F> = {
-  catch: <RS, RF>(reject: (failure: F) => Result<RS, RF>) => Chain<RS, RF> | Chain<S, empty>,
-  then: <RS, RF>(resolve: (success: S) => Result<RS, RF>) => Chain<RS, RF> | Chain<empty, F>,
+  catch: <RS, RF>(reject: (failure: F) => Result<RS, RF>) => Chain<S | RS, RF>,
+  then: <RS, RF>(resolve: (success: S) => Result<RS, RF>) => Chain<RS, F | RF>,
   result:  () => Result<S, F>,
   handle: () => S | F,
 };
