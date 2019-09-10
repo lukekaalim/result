@@ -19,6 +19,7 @@ type Chain<S, F> = {
   catch: <RS, RF>(reject: (failure: F) => Result<RS, RF>) => Chain<RS, RF> | Chain<S, empty>,
   then: <RS, RF>(resolve: (success: S) => Result<RS, RF>) => Chain<RS, RF> | Chain<empty, F>,
   result:  () => Result<S, F>,
+  handle: () => S | F,
 };
 
 declare export function chain<S, F>(result: Result<S, F>): Chain<S, F>;

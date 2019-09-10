@@ -38,6 +38,7 @@ const chain = (result) => ({
     (failure) => chain(reject(failure))
   ),
   result: () => result,
+  handle: () => handle(result, x => x, y => y),
 });
 
 module.exports = {

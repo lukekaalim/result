@@ -53,11 +53,24 @@ const expectChainPassThrough = expect(() => {
   ])
 });
 
+const expectChainHandle = expect(() => {
+  const succeedResult = chain(succeed('success'))
+    .handle();
+  const failResult = chain(fail('failure'))
+    .handle();
+
+  return assert('chain().handle should return the literal success or failure of the result', [
+    assert('successResult should be the literal string success', succeedResult === 'success'),
+    assert('failResult should be the literal string failure', failResult === 'failure'),
+  ])
+});
+
 const expectChain = expectAll('chain() should allow powerful recursive promise-like result composition', [
   expectChainResult,
   expectChainThen,
   expectChainCatch,
   expectChainPassThrough,
+  expectChainHandle,
 ]);
 
 module.exports = {
