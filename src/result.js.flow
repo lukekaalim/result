@@ -12,8 +12,8 @@ export type Result<TSuccess, TFailure> =
   | Failure<TFailure>
   | Success<TSuccess>;
 
-declare export function succeed<S>(value: S): Result<S, empty>;
-declare export function fail<F>(value: F): Result<empty, F>;
+declare export function succeed<S>(value: S): Success<S>;
+declare export function fail<F>(value: F): Failure<F>;
 
 type Chain<S, F> = {
   catch: <RS, RF>(reject: (failure: F) => Result<RS, RF>) => Chain<RS, RF> | Chain<S, empty>,
